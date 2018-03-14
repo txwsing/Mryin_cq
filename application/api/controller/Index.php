@@ -1,11 +1,10 @@
 <?php
-namespace app\index\controller;
+namespace app\api\controller;
 
 class Index
 {
     public function index()
     {
-      return 'abcdef';
-      
+        return "api";
     }
 }
