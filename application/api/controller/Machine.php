@@ -20,12 +20,6 @@ class Machine extends Controller
     //获取设备信息
     public function getMachine($id)
     {
-        $validate = new IDMustBePositiveInt();
-        $result = $validate->check($id);
-        if(!$result){
-            $this->error($validate->getError());
-        }else{
-            return true;
-        }
+
     }
 }
