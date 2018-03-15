@@ -1,18 +1,11 @@
 {include file='public/header,public/footer'}
 <body>
 <article class="page-container">
-    <form action="{:url('Brand/doBrandEdit',['id'=>$data.id])}" method="post" class="form form-horizontal" id="form-member-add">
+    <form action="{:url('Category/doCategoryEdit',['id'=>$data.id])}" method="post" class="form form-horizontal" id="form-member-add">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>品牌名：</label>
             <div class="formControls col-xs-2 col-sm-2">
                 <input type="text" class="input-text" value="{$data.title}" placeholder="" id="username" name="title">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">备注：</label>
-            <div class="formControls col-xs-4 col-sm-3">
-                <textarea name="note" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="$.Huitextarealength(this,100)">{$data.note}</textarea>
-                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
             </div>
         </div>
         <div class="row cl">

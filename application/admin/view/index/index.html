@@ -1,4 +1,4 @@
-{include file='public/header,public/footer'}
+{include file="public/header,public/footer"}
 <body>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
@@ -38,8 +38,8 @@
             <dd>
                 <ul>
                     <li><a data-href="{:url('Brand/brand')}" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-                    <li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-                    <li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">设备管理</a></li>
+                    <li><a data-href="{:url('Category/Category')}" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
+                    <li><a data-href="{:url('Machine/Machine')}" data-title="设备管理" href="javascript:void(0)">设备管理</a></li>
                 </ul>
             </dd>
         </dl>
@@ -47,8 +47,8 @@
             <dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="http://h-ui.duoshuo.com/admin/" data-title="评论列表" href="javascript:;">评论列表</a></li>
-                    <li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+                    <li><a data-href="" data-title="评论列表" href="javascript:;">评论列表</a></li>
+                    <li><a data-href="" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
                 </ul>
             </dd>
         </dl>
@@ -56,10 +56,10 @@
             <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
-                    <li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
-                    <li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
-                    <li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
+                    <li><a data-href="" data-title="会员列表" href="javascript:;">会员列表</a></li>
+                    <li><a data-href="" data-title="等级管理" href="javascript:;">等级管理</a></li>
+                    <li><a data-href="" data-title="积分管理" href="javascript:;">积分管理</a></li>
+                    <li><a data-href="" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
                 </ul>
             </dd>
         </dl>
@@ -67,7 +67,7 @@
             <dt><i class="Hui-iconfont">&#xe60d;</i>订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">订单列表</a></li>
+                    <li><a data-href="" data-title="会员列表" href="javascript:;">订单列表</a></li>
                 </ul>
             </dd>
         </dl>
@@ -75,7 +75,7 @@
             <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                    <li><a data-href="" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
                 </ul>
             </dd>
         </dl>
@@ -87,7 +87,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的桌面" data-href="">我的桌面</span>
+                    <span title="我的桌面" data-href="{:url('Index/welcome')}">我的桌面</span>
                     <em></em></li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="welcome.html"></iframe>
+            <iframe scrolling="yes" frameborder="0" src=""></iframe>
         </div>
     </div>
 </section>

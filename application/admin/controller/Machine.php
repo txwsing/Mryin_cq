@@ -14,5 +14,8 @@ use think\Controller;
 
 class Machine extends Controller
 {
-
+    public function Machine()
+    {
+        return $this->fetch();
+    }
 }

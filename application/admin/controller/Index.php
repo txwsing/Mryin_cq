@@ -23,5 +23,8 @@ class Index extends Controller
         return $this->fetch();
     }
 
+    public function welcome(){
+        return "欢迎来来到铲车圈后台系统，祝你生活愉快";
+    }
 
 }
