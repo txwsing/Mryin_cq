@@ -10,5 +10,3 @@
 // +-------------------------------------------------------------------
 
 use think\Route;
-
-Route::get('api/machine/:id','api/Machine/getMachine');

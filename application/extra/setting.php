@@ -7,6 +7,6 @@
  */
 
 return [
-    'img_prefix' => 'https://machine.hkfzcy.com/uploads',
+    'img_prefix' => 'https://machine.hkfzcy.com',
     'token_expire_in' => 7200,
 ];
