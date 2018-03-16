@@ -43,8 +43,7 @@ class Category extends Controller
         return $this->fetch();
     }
 
-    /**
-     * 执行添加
+    /** 执行添加
      */
     public function doAdd()
     {
@@ -94,7 +93,6 @@ class Category extends Controller
         }
 
     }
-
 
     /**
      * @执行删除

@@ -38,3 +38,8 @@ function getRandChar($length)
     return $str;
 
 }
+
+function p($data) {
+    echo '<pre>';
+    var_dump($data);
+}

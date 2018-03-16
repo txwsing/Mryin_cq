@@ -37,7 +37,7 @@ class Order extends BaseModel
     {
         $pagingData = self::where('user_id','=',$uid)
             ->order('create_time desc')
-            ->paginate($size,true,['page' => $page]);
+            ->paginate($size, true, ['page' => $page]);
         return $pagingData;
     }
 }

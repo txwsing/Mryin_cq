@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by 飞刀又见飞刀.
- * User: Mryin
+ * User: MrYin
  * Date: 2018/3/15
  * Time: 10:14
  * Company :郑州云客汇网络科技有限公司
@@ -12,7 +12,6 @@ namespace app\admin\controller;
 
 use app\admin\validate\BrandValidate;
 use think\Controller;
-use app\admin\model\Brand as BrandModel;
 use think\Request;
 
 class Brand extends Controller
@@ -28,7 +27,7 @@ class Brand extends Controller
     /**
      * 品牌管理
      */
-    public function Brand()
+    public function Brand ()
     {
         $data = $this->obj->getNormalBrand();
 
@@ -127,4 +126,7 @@ class Brand extends Controller
             ];
         }
     }
+
+
+
 }

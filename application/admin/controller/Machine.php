@@ -8,14 +8,93 @@
  */
 
 namespace app\admin\controller;
-
-
 use think\Controller;
+use think\Request;
+use app\admin\model\Machine as MachineModel;
+use think\Db;
 
 class Machine extends Controller
 {
+
+
+    private $obj;
+
+    public function _initialize()
+    {
+        $this->obj = model("Machine");
+    }
+
+
     public function Machine()
     {
-        return $this->fetch();
+        $machine = new MachineModel();
+        $data = $machine->getAllMachine();
+        return $this->fetch('',[
+            'data' => $data
+        ]);
     }
+
+    public function machineStop()
+    {
+        $id = intval(Request::instance()->param('id'));
+
+        if(empty($id))
+        {
+            return $msg = [
+                'msg' => '非法请求'
+            ];
+        }
+        $status = $this->obj->where('id','=',$id)->value('status');
+        if($status == 1){
+            $res = $this->obj->where('id','=',$id)->update(['status'=>0]);
+            if($res)
+            {
+                return ['msg'=>'停用成功','code'=>100];
+            }else{
+                return ['msg'=>'停失败','code'=>101];
+            }
+        }elseif($status==0){
+            $res = $this->obj->where('id','=',$id)->update(['status'=>1]);
+            if($res)
+            {
+                return ['msg'=>'启用成功','code'=>100];
+            }else{
+                return ['msg'=>'启用失败','code'=>101];
+            }
+        }
+
+    }
+
+
+//    public function machineStart()
+//    {
+//        $id = intval(Request::instance()->param('id'));
+//        if(empty($id))
+//        {
+//            return $msg = [
+//                'msg' => '非法请求'
+//            ];
+//        }
+//        /**
+//         * 判断该设备状态
+//         */
+//        $status = $this->obj->where('id','=',$id)->value('status');
+//        if($status==0){
+//            $res = $this->obj->where('id','=',$id)->update(['status'=>1]);
+//            if($res)
+//            {
+//                return true;
+//            }else{
+//                return false;
+//            }
+//        }else{
+//            return [
+//                'msg'=>'该设备已经是启用状态',
+//            ];
+//        }
+//
+//
+//
+//    }
+
 }
