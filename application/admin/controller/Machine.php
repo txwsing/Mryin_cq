@@ -31,23 +31,30 @@ class Machine extends Base
     public function machineStop()
     {
         $id = intval(Request::instance()->param('id'));
-
-        if($id)
+        if(empty($id))
         {
             return $msg = [
                 'msg' => '非法请求'
             ];
         }
-        $status = $this->obj->where('id','=',$id)->value('status');
-        if($status == 1){
-            $res = $this->obj->where('id','=',$id)->update(['status'=>0]);
+        $res = $this->obj->where('id','=',$id)->update(['status'=>0]);
             if($res)
             {
                 return ['msg'=>'停用成功','code'=>100];
             }else{
                 return ['msg'=>'停失败','code'=>101];
             }
-        }elseif($status==0){
+        }
+
+        public function machineStart()
+        {
+            $id = intval(Request::instance()->param('id'));
+            if(empty($id))
+            {
+                return $msg = [
+                    'msg' => '非法请求'
+                ];
+            }
             $res = $this->obj->where('id','=',$id)->update(['status'=>1]);
             if($res)
             {
@@ -57,7 +64,16 @@ class Machine extends Base
             }
         }
 
-    }
 
-
+        public function del()
+        {
+            $id = intval(Request::instance()->param('id'));
+            $res = $this->obj->where('id','=',$id)->delete();
+            if($res)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }
 }

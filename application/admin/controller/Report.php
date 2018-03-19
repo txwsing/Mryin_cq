@@ -8,11 +8,35 @@
  */
 
 namespace app\admin\controller;
-
-
-use think\Controller;
+use app\admin\model\Report as ReportModel;
+use think\Request;
 
 class Report extends Base
 {
+    public function report()
+    {
+        $data = ReportModel::getAllReports();
+        return $this->fetch('',[
+            'data'=>$data
+        ]);
+    }
 
+    public function del()
+    {
+        $id = intval(Request::instance()->param('id'));
+        $report = new ReportModel();
+        $result = $report->delete($id);
+        if($result)
+        {
+            return [
+                'code'=>100,
+                'msg'=>'删除成功'
+            ];
+        }else{
+            return [
+                'code'=>101,
+                'msg'=>'删除失败'
+            ];
+        }
+    }
 }

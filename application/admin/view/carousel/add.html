@@ -1,0 +1,22 @@
+{include file="public/header,public/footer"}
+<body>
+<div class="pd-20">
+    <div class="Huiform">
+        <form action="{:url('Carousel/doAdd')}" method="post" enctype="multipart/form-data">
+            <table class="table table-bg">
+                <tbody>
+                <tr>
+                    <th class="text-r">轮播图：</th>
+                    <td><input type="file" class="" name="url" multiple="multiple"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><button class="btn btn-success radius" type="submit"><i class="icon-ok"></i> 确定</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

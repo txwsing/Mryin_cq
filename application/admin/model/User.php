@@ -27,8 +27,8 @@ class User extends Model
     }
     public static function getAllUser()
     {
-       $result =  self::with('level')->select();
-        $result = $result->toArray();
+       $result =  self::with('level')->paginate(10);
+//        $result = $result->toArray();
        return $result;
     }
 
