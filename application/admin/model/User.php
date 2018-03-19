@@ -13,5 +13,40 @@ use think\Model;
 
 class User extends Model
 {
-    protected $hidden = ['openid','extend','delete_time','create_time','update_time'];
+    protected $hidden = ['openid','extend','delete_time','update_time'];
+
+    public function level()
+    {
+        return $this->belongsTo('Level','level_id','id');
+    }
+
+    public  function getAllLevel()
+    {
+        return  $this->hasMany('Level');
+
+    }
+    public static function getAllUser()
+    {
+       $result =  self::with('level')->select();
+        $result = $result->toArray();
+       return $result;
+    }
+
+    public static function getUserById($id)
+    {
+        $data = self::find($id);
+        $data = $data->toArray();
+        return $data;
+    }
+
+    public function editUserById($id)
+    {
+        $data = input('post.');
+        $result = $this->where('id','=',$id)->update($data);
+        return $result;
+
+    }
+
+
+
 }

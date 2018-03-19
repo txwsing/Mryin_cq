@@ -1,0 +1,53 @@
+{include file="public/header,public/footer"}
+<body>
+<article class="page-container">
+    <form action="{:url('User/doEdit',['id'=>$data.id])}" method="post" class="form form-horizontal" id="form-member-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>昵称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.nickName}" placeholder="" id="username" name="nickName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.true_name}" placeholder="" id="" name="true_name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.tel}" placeholder="" id="mobile" name="tel">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">会员等级：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="level_id">
+                    {volist name="level" id="vo"}
+					<option value="{$vo.id}" {if condition ="$data.level_id eq $vo.id"} selected {/if} >{$vo.name}</option>
+                    {/volist}
+				</select>
+				</span> </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.address}" placeholder="" id="" name="address">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+<script type="text/javascript">
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

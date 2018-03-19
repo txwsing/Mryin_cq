@@ -8,29 +8,22 @@
  */
 
 namespace app\admin\controller;
-
-
 use app\admin\validate\BrandValidate;
-use think\Controller;
 use think\Request;
 
-class Brand extends Controller
+class Brand extends Base
 {
-
     private $obj;
-
     public function _initialize()
     {
         $this->obj = model("Brand");
     }
-
     /**
      * 品牌管理
      */
     public function Brand ()
     {
         $data = $this->obj->getNormalBrand();
-
         return $this->fetch('', [
             'data' => $data
         ]);
@@ -74,7 +67,7 @@ class Brand extends Controller
     {
         $id = intval(Request::instance()->param('id'));
         if (empty($id)) {
-            $this->error('id部存在');
+            $this->error('id不存在');
         }
         $data = $this->obj->where('id', '=', $id)->find();
 

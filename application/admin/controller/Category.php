@@ -11,10 +11,9 @@ namespace app\admin\controller;
 
 
 use app\admin\validate\CategoryValidate;
-use think\Controller;
 use think\Request;
 
-class Category extends Controller
+class Category extends Base
 {
     private $obj;
 

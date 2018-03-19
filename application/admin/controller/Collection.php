@@ -10,9 +10,7 @@
 namespace app\admin\controller;
 
 
-use think\Controller;
-
-class Collection extends Controller
+class Collection extends Base
 {
 
 }

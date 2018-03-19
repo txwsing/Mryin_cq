@@ -12,7 +12,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Report extends Controller
+class Report extends Base
 {
 
 }

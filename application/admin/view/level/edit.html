@@ -1,0 +1,63 @@
+{include file="public/header,public/footer"}
+<body>
+<article class="page-container">
+    <form action="{:url('Level/doEdit',['id'=>$data.id])}" method="post" class="form form-horizontal" id="form-member-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>等级名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.name}" placeholder="" id="name" name="name">
+            </div>
+        </div><div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>会员有效期：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.valid_time}" placeholder="" id="valid_time" name="valid_time">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>拨打电话次数：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.tel_times}" placeholder="" id="tel_times" name="tel_times">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发布设备次数：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.mac_times}" placeholder="" id="mac_times" name="mac_times">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>刷新次数：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.refresh_times}" placeholder="" id="refresh_times" name="refresh_times">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>会员价格：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.price}" placeholder="" id="price" name="price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>会员折扣：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.discount}" placeholder="" id="discount" name="discount">
+            </div>
+        </div> <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>拨打电话价格：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$data.tel_price}" placeholder="" id="tel_price" name="tel_price">
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+<script type="text/javascript">
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

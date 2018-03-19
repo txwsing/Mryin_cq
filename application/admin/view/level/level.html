@@ -1,0 +1,71 @@
+{include file="public/header,public/footer"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员中心 <span
+        class="c-gray en">&gt;</span> 等级管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="80">ID</th>
+                <th width="100">等级名称</th>
+                <th width="100">有效期</th>
+                <th width="90">拨打电话次数</th>
+                <th width="150">刷新次数</th>
+                <th width="150">设备发布次数</th>
+                <th width="">会员价格</th>
+                <th width="">会员折扣</th>
+                <th width="">拨打电话价格</th>
+                <th width="100">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="data" id = "vo"}
+            <tr class="text-c">
+                <td>{$vo.id}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.valid_time}</td>
+                <td>{$vo.mac_times}</td>
+                <td>{$vo.tel_times}</td>
+                <td>{$vo.refresh_times}</td>
+                <td>{$vo.price}</td>
+                <td>{$vo.discount}</td>
+                <td>{$vo.tel_price}</td>
+                <td class="td-manage"> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','{:url('Level/edit',['id'=>$vo.id])}','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a><a title="删除" href="javascript:;" onclick="member_del(this,'{$vo.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    /*用户-添加*/
+    function member_add(title, url, w, h) {
+        layer_show(title, url, w, h);
+    }
+
+    /*用户-编辑*/
+    function member_edit(title, url, id, w, h) {
+        layer_show(title, url, w, h);
+    }
+
+    /*用户-删除*/
+    function member_del(obj, id) {
+        layer.confirm('确认要删除吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: "/admin/Level/del/id/" + id,
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!', {icon: 1, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+</script>
+</body>
+</html>

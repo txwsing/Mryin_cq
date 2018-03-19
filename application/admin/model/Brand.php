@@ -15,7 +15,6 @@ use think\Model;
 class Brand extends Model
 {
     protected $hidden = ['note','create_time'];
-//    protected $autoWriteTimestamp = true;
     public function addBrand($data)
     {
         $result = $this->save($data);

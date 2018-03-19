@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 
-class Carousel
+class Carousel extends Base
 {
 
 }

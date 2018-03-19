@@ -12,7 +12,7 @@
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
                             <li><a href="#">切换账户</a></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a href="{:url('Index/Login')}">退出</a></li>
                         </ul>
                     </li>
                     <li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
@@ -56,10 +56,8 @@
             <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="" data-title="会员列表" href="javascript:;">会员列表</a></li>
-                    <li><a data-href="" data-title="等级管理" href="javascript:;">等级管理</a></li>
-                    <li><a data-href="" data-title="积分管理" href="javascript:;">积分管理</a></li>
-                    <li><a data-href="" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
+                    <li><a data-href="{:url('User/user')}" data-title="会员列表" href="javascript:;">会员列表</a></li>
+                    <li><a data-href="{:url('Level/level')}" data-title="等级管理" href="javascript:;">等级管理</a></li>
                 </ul>
             </dd>
         </dl>
@@ -83,7 +81,7 @@
             <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                    <li><a data-href="{:url('AdminUser/adminuser')}" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
                 </ul>
             </dd>
         </dl>

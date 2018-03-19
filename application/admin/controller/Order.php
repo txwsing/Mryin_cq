@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 
-class Order
+class Order extends Base
 {
 
 }

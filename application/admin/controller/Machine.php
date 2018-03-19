@@ -8,22 +8,16 @@
  */
 
 namespace app\admin\controller;
-use think\Controller;
-use think\Request;
 use app\admin\model\Machine as MachineModel;
-use think\Db;
+use think\Request;
 
-class Machine extends Controller
+class Machine extends Base
 {
-
-
     private $obj;
-
     public function _initialize()
     {
         $this->obj = model("Machine");
     }
-
 
     public function Machine()
     {
@@ -38,7 +32,7 @@ class Machine extends Controller
     {
         $id = intval(Request::instance()->param('id'));
 
-        if(empty($id))
+        if($id)
         {
             return $msg = [
                 'msg' => '非法请求'
@@ -65,36 +59,5 @@ class Machine extends Controller
 
     }
 
-
-//    public function machineStart()
-//    {
-//        $id = intval(Request::instance()->param('id'));
-//        if(empty($id))
-//        {
-//            return $msg = [
-//                'msg' => '非法请求'
-//            ];
-//        }
-//        /**
-//         * 判断该设备状态
-//         */
-//        $status = $this->obj->where('id','=',$id)->value('status');
-//        if($status==0){
-//            $res = $this->obj->where('id','=',$id)->update(['status'=>1]);
-//            if($res)
-//            {
-//                return true;
-//            }else{
-//                return false;
-//            }
-//        }else{
-//            return [
-//                'msg'=>'该设备已经是启用状态',
-//            ];
-//        }
-//
-//
-//
-//    }
 
 }
