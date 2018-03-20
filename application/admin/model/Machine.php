@@ -42,4 +42,5 @@ class Machine extends Model
 //        p($result);
         return $result;
     }
+
 }

@@ -14,6 +14,7 @@ use think\Model;
 
 class AdminUser extends Model
 {
+    
     public static function getAdminUser()
     {
         $data = self::select();
