@@ -17,14 +17,15 @@ class Carousel extends BaseModel
 {
     protected $hidden = ['update_time','delete_time'];
 
+    public function getUrlAttr($value,$data)
+    {
+        return $this->prefixImgUrl($value,$data);
+    }
 
 
     public static function getCarousel()
     {
         $carousel = Carousel::where('del', 0)->field('id, url')->select();
-        foreach ($carousel as $k => $v) {
-            $carousel[$k]['url'] = self::getImgUrlAttr($v['url']);
-        }
         return $carousel;
     }
 }

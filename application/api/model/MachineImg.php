@@ -18,4 +18,15 @@ class MachineImg extends BaseModel
         return $this->prefixImgUrl($value,$data);
     }
 
+    public static function addMachineImage($path)
+    {
+        return  self::insertGetId(['url'  =>  $path]);
+    }
+
+    public static function updateImageByMachineId($images_ids, $machine_id)
+    {
+
+        self::where('id', 'in', $images_ids)->update(['machine_id'=>$machine_id]);
+    }
+
 }

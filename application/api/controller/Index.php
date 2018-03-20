@@ -13,6 +13,7 @@ use app\api\model\Carousel as CarouselModel;
 use app\lib\exception\CarouselMissException;
 use think\Exception;
 use think\Db;
+use think\Request;
 
 class Index
 {
@@ -49,7 +50,12 @@ class Index
     /**
      * 获取地区
      */
+    public function getProvinceId()
+    {
+        $province = Request::instance()->param('province');
+        return Db::name('provinces')->where('province', $province)->value('provinceid');
 
+    }
 
     /**
      * 获取分类

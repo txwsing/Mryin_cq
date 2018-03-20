@@ -10,18 +10,24 @@ namespace app\api\controller;
 
 
 use app\api\validate\Count;
+use app\api\validate\MachineVa;
 use app\api\validate\IDMustBePositiveInt;
 use app\lib\exception\MachineException;
 use think\Controller;
+use think\Request;
 use app\api\model\Machine as MachineModel;
+use app\api\model\MachineImg as MachineImgModel;
 use app\api\validate\PagingParameter;
+use app\api\service\Token as TokenService;
 
-class Machine extends Controller
+class Machine extends BaseController
 {
-    public function getMachineRecent($province_id, $category_id, $brand_id, $page=1, $size=15)
+    public function getMachineRecent($province_id = '', $category_id = '', $brand_id = '', $page=1, $size=15)
     {
         (new PagingParameter())->goCheck();
-        $pagingMachines = MachineModel::getMostRecent($province_id, $category_id, $brand_id, $page, $size);
+        $uid = TokenService::getCurrentUid();
+        $pagingMachines = MachineModel::getMostRecent($province_id, $category_id, $brand_id, $page, $size, $uid);
+
         if($pagingMachines->isEmpty()){
             return [
                 'data' => [],
@@ -36,16 +42,39 @@ class Machine extends Controller
     }
 
 
-    public function getAllInCategory($id)
-    {
-        (new IDMustBePositiveInt())->goCheck();
-        $Machines = MachineModel::getMachinesByCategoryID($id);
-        if($Machines->isEmpty()){
-            throw new MachineException();
+    //上传设备图片
+    public function uploadImage() {
+        $up_result = $this->uploadOne('machine', 'image');
+        if ($up_result['code'] == 1) {
+
+            return MachineImgModel::addMachineImage($up_result['path']);
+        } else {
+            return '';
         }
-        $Machines = $Machines->hidden(['summary']);
-        return $Machines;
+
     }
+
+    public function addMachine() {
+        $data = Request::instance()->param();
+        $img_ids = $data['img_ids'];
+        unset($data['img_ids']);
+        $data['create_time'] = date('Y-m-d H:i:s');
+        $data['uid'] = TokenService::getCurrentUid();
+        $res =  MachineModel::addMachine($data);
+        if ($res) {
+            MachineImgModel::updateImageByMachineId($img_ids, $res);
+            return [
+                'code' => '100',
+                'msg' => '添加成功'
+            ];
+        }
+    }
+
+    public function countMachineViewNum()
+    {
+        return MachineModel::countMachineViewNum();
+    }
+
 
     public function getOne($id)
     {
@@ -57,10 +86,5 @@ class Machine extends Controller
         return $Machine;
     }
 
-
-    public function deleteOne($id)
-    {
-
-    }
 
 }
