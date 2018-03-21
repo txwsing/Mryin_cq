@@ -31,7 +31,7 @@ class Machine extends Base
     public function machineStop()
     {
         $id = intval(Request::instance()->param('id'));
-        if(empty($id))
+        if(!$id)
         {
             return $msg = [
                 'msg' => '非法请求'
@@ -49,7 +49,7 @@ class Machine extends Base
         public function machineStart()
         {
             $id = intval(Request::instance()->param('id'));
-            if(empty($id))
+            if(!$id)
             {
                 return $msg = [
                     'msg' => '非法请求'

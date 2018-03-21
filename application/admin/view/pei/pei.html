@@ -41,10 +41,26 @@
                 <td>{$vo.address}</td>
                 <td><a href="javascript:;" onClick="picture_edit('图库查看','{:url('PeiImg/peiImg',['id'=>$vo.id])}','10001')">点击查看</a></td>
                 <td>{$vo.create_time}</td>
-                <td class="td-status"><span class="label label-success radius">
-                    已启用
-                </span></td>
-                <td class="td-manage"><a style="text-decoration:none" onClick="member_stop(this,'{$vo.id}')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a><a title="删除" href="javascript:;" onclick="member_del(this,'{$vo.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                <td class="td-status">
+                    {eq name="vo.status" value="1"}
+                    <span class="label label-success radius">已启用</span>
+                    {else/}
+                    <span class="label label-defaunt radius">已停用</span>
+                    {/eq}
+                </td>
+                <td class="td-manage">
+                    {eq name="vo.status" value="1"}
+                    <a style="text-decoration:none" onClick="member_stop(this,'{$vo.id}')" href="javascript:;" title="停用">
+                        <i class="Hui-iconfont">&#xe631;</i>
+                    </a>
+                    {else/}
+                    <a style="text-decoration:none" onClick="member_start(this,'{$vo.id}')" href="javascript:;" title="启用">
+                        <i class="Hui-iconfont">&#xe6e1;</i>
+                    </a>
+                    {/eq}
+                    <a title="删除" href="javascript:;" onclick="member_del(this,'{$vo.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i>
+                    </a>
+                </td>
             </tr>
             {/volist}
             </tbody>
@@ -59,13 +75,13 @@
         layer.confirm('确认要停用吗？',function(index){
             $.ajax({
                 type: 'POST',
-                url: '/admin/Machine/machineStop/id/'+id,
+                url: '/admin/Pei/PeiStop/id/'+id,
                 dataType: 'json',
                 success: function(data){
                     $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
                     $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
                     $(obj).remove();
-                    layer.msg('data.msg!',{icon: 5,time:1000});
+                    layer.msg('停用成功',{icon: 5,time:1000});
                 },
                 error:function(data) {
                     console.log(data.msg);
@@ -79,14 +95,14 @@
         layer.confirm('确认要启用吗？',function(index){
             $.ajax({
                 type: 'POST',
-                url: '/admin/Machine/machineStart/id/'+id,
+                url: '/admin/Pei/PeiStart/id/'+id,
                 dataType: 'json',
                 success: function(data){
                     console.log(data)
                     $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
                     $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
                     $(obj).remove();
-                    layer.msg('data.msg!',{icon: 6,time:1000});
+                    layer.msg('启用成功',{icon: 6,time:1000});
                 },
                 error:function(data) {
                     console.log(data.msg);

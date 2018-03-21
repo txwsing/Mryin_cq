@@ -12,20 +12,26 @@ namespace app\api\model;
 class View extends BaseModel
 {
 
-    public static function getMostRecent($province_id, $category_id, $brand_id, $page=1, $size=15)
+    public static function addView($machine_id, $uid)
     {
-        $map = [];
-        if ($province_id > 0) $map['province_id'] = $province_id;
-        if ($category_id > 0) $map['category_id'] = $category_id;
-        if ($brand_id > 0) $map['brand_id'] = $brand_id;
-        $machines = self::with(['imgs', 'user'])->where($map)->order('create_time desc')->paginate($size, true, ['page' => $page]);
-        return $machines;
+        return self::insertGetId(['machine_id' => $machine_id, 'uid' => $uid]);
     }
 
-    public static function addMachine($data) {
 
-        return  self::insertGetId($data);
+    public static function getCurrentDayViewNum($machine_id, $uid)
+    {
+        $current_day_time = date('Y-m-d H:i:s');
+        $map['uid'] = $uid;
+        $map['machine_id'] = $machine_id;
+        $map['view_date'] = ['EGT', $current_day_time];
+        return self::where($map)->count();
+    }
 
+    public static function getCurrentViewNum($machine_id, $uid)
+    {
+        $map['uid'] = $uid;
+        $map['machine_id'] = $machine_id;
+        return self::where($map)->count();
     }
 
 

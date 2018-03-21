@@ -23,9 +23,9 @@ class Carousel extends BaseModel
     }
 
 
-    public static function getCarousel()
+    public static function getCarousel($type)
     {
-        $carousel = Carousel::where('del', 0)->field('id, url')->select();
+        $carousel = Carousel::where(['type' => $type, 'del' => 0])->field('id, url')->select();
         return $carousel;
     }
 }

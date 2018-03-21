@@ -36,4 +36,41 @@ class Pei extends Base
     }
 
     //配件停用
+    public function PeiStop()
+    {
+        $id = intval(Request::instance()->param('id'));
+        if(!$id)
+        {
+            return $msg = [
+                'msg' => '非法请求'
+            ];
+        }
+        $res = PeiModel::where('id','=',$id)->update(['status'=>0]);
+        if($res)
+        {
+            return ['msg'=>'停用成功','code'=>100];
+        }else{
+            return ['msg'=>'停失败','code'=>101];
+        }
+    }
+
+
+    public function PeiStart()
+    {
+        $id = intval(Request::instance()->param('id'));
+        if(!$id)
+        {
+            return $msg = [
+                'msg' => '非法请求'
+            ];
+        }
+        $res = PeiModel::where('id','=',$id)->update(['status'=>1]);
+        if($res)
+        {
+            return ['msg'=>'启用成功','code'=>100];
+        }else{
+            return ['msg'=>'启用失败','code'=>101];
+        }
+    }
+
 }

@@ -23,10 +23,10 @@ class Index
      * @http GET
      *
      */
-    public function getCarousel()
+    public function getCarousel($type = 1)
     {
 
-        $carousel = CarouselModel::getCarousel();
+        $carousel = CarouselModel::getCarousel($type);
 
         //会抛出CarouselMissException的异常给render()方法，从而进行异常处理
         if(!$carousel){

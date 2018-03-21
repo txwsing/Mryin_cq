@@ -17,25 +17,27 @@ use think\Controller;
 use think\Request;
 use app\api\model\Machine as MachineModel;
 use app\api\model\MachineImg as MachineImgModel;
+use app\api\model\View as MachineViewModel;
 use app\api\validate\PagingParameter;
 use app\api\service\Token as TokenService;
 
 class Machine extends BaseController
 {
-    public function getMachineRecent($province_id = '', $category_id = '', $brand_id = '', $page=1, $size=15)
+    public function getMachineRecent( $province_id = '', $category_id = '', $brand_id = '', $keywords = '', $page=1, $size=15)
     {
         (new PagingParameter())->goCheck();
-        $uid = TokenService::getCurrentUid();
-        $pagingMachines = MachineModel::getMostRecent($province_id, $category_id, $brand_id, $page, $size, $uid);
+        $pagingMachines = MachineModel::getMostRecent($province_id, $category_id, $brand_id, $keywords, $page, $size);
 
         if($pagingMachines->isEmpty()){
             return [
+                'code' => 0,
                 'data' => [],
                 'current_page' => $pagingMachines->getCurrentPage()
             ];
         }
 
         return [
+            'code' => 100,
             'data' => $pagingMachines->toArray(),
             'current_page' => $pagingMachines->getCurrentPage()
         ];
@@ -60,6 +62,8 @@ class Machine extends BaseController
         unset($data['img_ids']);
         $data['create_time'] = date('Y-m-d H:i:s');
         $data['uid'] = TokenService::getCurrentUid();
+        $data['number'] = 'M' . time();
+
         $res =  MachineModel::addMachine($data);
         if ($res) {
             MachineImgModel::updateImageByMachineId($img_ids, $res);
