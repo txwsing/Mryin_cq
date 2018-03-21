@@ -22,7 +22,22 @@ class Pin extends Model
 
     public static function getAllPin()
     {
-        $pins = self::with('uName')->paginate(10);
+
+        $keywords = trim(input('get.keyword'));
+        if($keywords){
+            $map['name|title']=array('like',"%$keywords%");
+        }else{
+            $map = [];
+        }
+        if(!empty($map))
+        {
+            $pins = self::with('uName')->where($map)->paginate(10);
+        }
+        else{
+            $pins = self::with('uName')->paginate(10);
+        }
+
+
         return $pins;
     }
 }

@@ -21,11 +21,11 @@ class Machine extends Base
 
     public function Machine()
     {
-        $machine = new MachineModel();
-        $data = $machine->getAllMachine();
-        return $this->fetch('',[
-            'data' => $data
-        ]);
+            $machine = new MachineModel();
+            $data = $machine->getAllMachine();
+            return $this->fetch('',[
+                'data' => $data
+            ]);
     }
 
     public function machineStop()

@@ -20,7 +20,20 @@ class Pei extends Model
 
     public static function getAllPei()
     {
-        $result = self::with('uName')->paginate(10);
+
+        $keywords = trim(input('get.keyword'));
+        if($keywords){
+            $map['name|number']=array('like',"%$keywords%");
+        }else{
+            $map = [];
+        }
+        if(!empty($map))
+        {
+            $result = self::with('uName')->where($map)->paginate(10);
+        }
+        else{
+            $result = self::with('uName')->paginate(10);
+        }
         return $result;
     }
 }

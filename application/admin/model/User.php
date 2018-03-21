@@ -27,8 +27,20 @@ class User extends Model
     }
     public static function getAllUser()
     {
-       $result =  self::with('level')->paginate(10);
-//        $result = $result->toArray();
+
+        $keywords = trim(input('get.keyword'));
+        if($keywords){
+            $map['nickName']=array('like',"%$keywords%");
+        }else{
+            $map = [];
+        }
+        if(!empty($map))
+        {
+            $result =  self::with('level')->where($map)->paginate(10);
+        }
+        else{
+            $result =  self::with('level')->paginate(10);
+        }
        return $result;
     }
 
