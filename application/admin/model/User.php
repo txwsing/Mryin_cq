@@ -25,6 +25,7 @@ class User extends Model
         return  $this->hasMany('Level');
 
     }
+
     public static function getAllUser()
     {
 

@@ -46,7 +46,7 @@ class Machine extends Base
             }
         }
 
-        public function machineStart()
+    public function machineStart()
         {
             $id = intval(Request::instance()->param('id'));
             if(!$id)
@@ -64,8 +64,7 @@ class Machine extends Base
             }
         }
 
-
-        public function del()
+    public function del()
         {
             $id = intval(Request::instance()->param('id'));
             $res = $this->obj->where('id','=',$id)->delete();
