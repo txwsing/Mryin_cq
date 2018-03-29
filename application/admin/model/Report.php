@@ -28,7 +28,6 @@ class Report extends Model
     public static function getAllReports()
     {
         $datas = self::with('uName,machineName')->paginate(10);
-//        $datas = $datas->toArray();
         return $datas;
     }
 }

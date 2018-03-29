@@ -10,6 +10,7 @@
 namespace app\admin\controller;
 use app\admin\validate\BrandValidate;
 use think\Request;
+use app\admin\model\Category as CategoryModel;
 
 class Brand extends Base
 {
@@ -25,7 +26,7 @@ class Brand extends Base
     {
         $data = $this->obj->getNormalBrand();
         return $this->fetch('', [
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
@@ -35,7 +36,10 @@ class Brand extends Base
 
     public function brandAdd()
     {
-        return $this->fetch();
+        $categors = CategoryModel::getAllCategorys();
+        return $this->fetch('',[
+            'categorys'=>$categors
+        ]);
     }
 
     /**
@@ -69,10 +73,13 @@ class Brand extends Base
         if (empty($id)) {
             $this->error('id不存在');
         }
+        $categors = CategoryModel::getAllCategorys();
         $data = $this->obj->where('id', '=', $id)->find();
 
+
         return $this->fetch('', [
-            'data' => $data
+            'data' => $data,
+            'categorys'=>$categors
         ]);
 
     }

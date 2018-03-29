@@ -1,43 +1,47 @@
 <?php
-/**
- * Created by 飞刀又见飞刀.
- * User: Mryin
- * Date: 2018/3/19
- * Time: 12:33
- * Company :郑州云客汇网络科技有限公司
- */
+    /**
+     * Created by 飞刀又见飞刀.
+     * User: Mryin
+     * Date: 2018/3/19
+     * Time: 12:33
+     * Company :郑州云客汇网络科技有限公司
+     */
 
-namespace app\admin\controller;
+    namespace app\admin\controller;
+    use think\Controller;
+    use app\admin\model\AdminUser as AdminUserModel;
+    use think\Session;
 
-
-use think\Controller;
-use app\admin\model\AdminUser as AdminUserModel;
-use think\Session;
-
-class Login extends Controller
-{
-    public function login()
+    class Login extends Controller
     {
-        return $this->fetch();
-    }
-    public function doLogin()
-    {
-        $data = input('post.');
-        $user = AdminUserModel::getAdminUser();
-        $name = $user[0]['name'];
-        if($data['name'] == $name && md5($data['password']) == $user[0]['password'])
+        public function login()
         {
-            Session::set('id',$user[0]['id']);
-            return [
-                'code'=>100,
-                'msg'=>"登陆成功"
-            ];
+            return $this->fetch();
         }
-        else{
-            return [
-                'code'=>101,
-                'msg'=>"登陆失败"
-            ];
+        public function doLogin()
+        {
+            $data = input('post.');
+            $user = AdminUserModel::getAdminUser();
+            $name = $user[0]['name'];
+            if($data['name'] == $name && md5($data['password']) == $user[0]['password'])
+            {
+                Session::set('id',$user[0]['id']);
+                return [
+                    'code'=>100,
+                    'msg'=>"登陆成功"
+                ];
+            }
+            else{
+                return [
+                    'code'=>101,
+                    'msg'=>"登陆失败"
+                ];
+            }
+        }
+
+        public function loginOut()
+        {
+            Session::clear();
+            $this->redirect('login/login');
         }
     }
-}

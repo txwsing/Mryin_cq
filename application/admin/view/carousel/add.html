@@ -5,10 +5,26 @@
         <form action="{:url('Carousel/doAdd')}" method="post" enctype="multipart/form-data">
             <table class="table table-bg">
                 <tbody>
-                <tr>
-                    <th class="text-r">轮播图：</th>
-                    <td><input type="file" class="" name="url" multiple="multiple"></td>
-                </tr>
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3">轮播类型：</label>
+                        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="type">
+					<option value="" selected>请选择轮播类型</option>
+					<option value="1">设备轮播</option>
+					<option value="2">配件轮播</option>
+					<option value="3">人才招聘</option>
+				</select>
+				</span> </div>
+                    </div>
+
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3">附件：</label>
+                        <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+				<input class="input-text upload-url" type="text" name="url" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
+				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+				<input type="file" multiple name="url" class="input-file">
+				</span> </div>
+                    </div>
                 <tr>
                     <th></th>
                     <td><button class="btn btn-success radius" type="submit"><i class="icon-ok"></i> 确定</button></td>

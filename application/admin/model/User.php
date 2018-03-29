@@ -48,7 +48,6 @@ class User extends Model
     public static function getUserById($id)
     {
         $data = self::find($id);
-        $data = $data->toArray();
         return $data;
     }
 

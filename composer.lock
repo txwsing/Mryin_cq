@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "87c9395f62a03ae93277fe59d656931f",
     "content-hash": "cfbbe7f9a3f136430606c041d8fcec9a",
     "packages": [
         {
@@ -56,7 +55,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-01-31 08:40:10"
+            "time": "2018-01-31T08:40:10+00:00"
         },
         {
             "name": "topthink/think-captcha",
@@ -92,7 +91,7 @@
                 }
             ],
             "description": "captcha package for thinkphp5",
-            "time": "2016-07-06 01:47:11"
+            "time": "2016-07-06T01:47:11+00:00"
         },
         {
             "name": "topthink/think-helper",
@@ -128,7 +127,7 @@
                 }
             ],
             "description": "The ThinkPHP5 Helper Package",
-            "time": "2017-04-05 07:15:37"
+            "time": "2017-04-05T07:15:37+00:00"
         },
         {
             "name": "topthink/think-image",
@@ -168,7 +167,7 @@
                 }
             ],
             "description": "The ThinkPHP5 Image Package",
-            "time": "2016-09-29 06:05:43"
+            "time": "2016-09-29T06:05:43+00:00"
         },
         {
             "name": "topthink/think-installer",
@@ -209,7 +208,7 @@
                     "email": "448901948@qq.com"
                 }
             ],
-            "time": "2017-05-27 06:58:09"
+            "time": "2017-05-27T06:58:09+00:00"
         },
         {
             "name": "topthink/think-migration",
@@ -248,7 +247,7 @@
                     "email": "448901948@qq.com"
                 }
             ],
-            "time": "2017-03-31 06:33:23"
+            "time": "2017-03-31T06:33:23+00:00"
         },
         {
             "name": "topthink/think-mongo",
@@ -282,7 +281,7 @@
                 }
             ],
             "description": "mongodb driver for thinkphp5",
-            "time": "2018-01-30 07:12:02"
+            "time": "2018-01-30T07:12:02+00:00"
         },
         {
             "name": "topthink/think-oracle",
@@ -316,7 +315,7 @@
                 }
             ],
             "description": "Oracle driver for thinkphp5",
-            "time": "2017-02-06 02:03:03"
+            "time": "2017-02-06T02:03:03+00:00"
         },
         {
             "name": "topthink/think-queue",
@@ -361,7 +360,7 @@
                 }
             ],
             "description": "The ThinkPHP5 Queue Package",
-            "time": "2017-06-25 00:49:56"
+            "time": "2017-06-25T00:49:56+00:00"
         }
     ],
     "packages-dev": [],

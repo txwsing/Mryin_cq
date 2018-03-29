@@ -25,6 +25,7 @@ class Carousel extends Base
 
     public function add ()
     {
+
         return $this->fetch();
     }
 

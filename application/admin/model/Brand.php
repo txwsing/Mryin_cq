@@ -17,13 +17,22 @@ class Brand extends Model
     protected $hidden = ['note','create_time'];
     public function addBrand($data)
     {
+
         $result = $this->save($data);
         return $result;
     }
 
+
+    public function getCategorys()
+    {
+        return $this->belongsTo('Category','cid','id');
+    }
+
     public function getNormalBrand()
     {
-       return $this->select();
+        $result = self::with('getCategorys')->paginate(10);
+//        $result= $result->toArray();
+        return $result;
     }
 
 

@@ -17,4 +17,11 @@ class Category extends Model
     protected $hidden = [
         'create_time'
     ];
+
+
+    public static function getAllCategorys()
+    {
+        $data = self::select();
+        return $data;
+    }
 }
